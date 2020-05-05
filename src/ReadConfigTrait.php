@@ -27,7 +27,7 @@ trait ReadConfigTrait
         $conf = Configuration::auto();
         $conf->load();
 
-        $reader = new Reader($conf->get('db'));
+        $reader = new Reader($conf->get('db', []));
         $reader->addPacker('pgsql', new KeyValue\Postgres());
 
         $this->dbConfig = $reader;
