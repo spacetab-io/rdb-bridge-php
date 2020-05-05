@@ -1,0 +1,40 @@
+{
+  "name": "spacetab-io/rdb-bridge",
+  "description": "Rdb bridge (spacetab-io/rdb) to use migration and seed commands with our configuration (spacetab-io/configuration).",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "roquie",
+      "email": "roquie0@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "spacetab-io/rdb": "^1.0",
+    "spacetab-io/db-config": "^1.0",
+    "spacetab-io/configuration": "^3.0",
+    "amphp/postgres": "^1.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9",
+    "phpstan/phpstan": "^0.12",
+    "symfony/var-dumper": "^5"
+  },
+  "bin": [
+    "bin/rdb-bridge"
+  ],
+  "autoload": {
+    "psr-4": {
+      "Spacetab\\RdbBridge\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Spacetab\\Tests\\RdbBridge\\": "tests"
+    }
+  },
+  "config": {
+    "sort-packages": true
+  }
+}

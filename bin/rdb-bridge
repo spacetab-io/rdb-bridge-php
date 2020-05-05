@@ -1,0 +1,41 @@
+#!/usr/bin/env php
+<?php
+
+use Spacetab\RdbBridge\MigrateDownCommand;
+use Spacetab\RdbBridge\MigrateInstallCommand;
+use Spacetab\RdbBridge\MigrateMakeCommand;
+use Spacetab\RdbBridge\MigrateRefreshCommand;
+use Spacetab\RdbBridge\MigrateResetCommand;
+use Spacetab\RdbBridge\MigrateStatusCommand;
+use Spacetab\RdbBridge\MigrateUpCommand;
+use Spacetab\RdbBridge\SeedMakeCommand;
+use Spacetab\RdbBridge\SeedRunCommand;
+use Symfony\Component\Console\Application;
+
+ini_set('date.timezone', 'UTC');
+
+$locations = [
+    __DIR__ . '/../../../autoload.php',
+    __DIR__ . '/../vendor/autoload.php',
+    __DIR__ . '/vendor/autoload.php'
+];
+
+foreach ($locations as $file) {
+    if (file_exists($file)) {
+        require_once $file;
+        break;
+    }
+}
+
+$app = new Application('Rdb bridge');
+$app->add(new MigrateMakeCommand());
+$app->add(new MigrateInstallCommand());
+$app->add(new MigrateUpCommand());
+$app->add(new MigrateDownCommand());
+$app->add(new MigrateResetCommand());
+$app->add(new MigrateStatusCommand());
+$app->add(new MigrateRefreshCommand());
+$app->add(new SeedRunCommand());
+$app->add(new SeedMakeCommand());
+
+$app->run();

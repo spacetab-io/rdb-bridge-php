@@ -1,0 +1,6 @@
+defaults:
+  db:
+    default:
+      user: rdbBridgeConfigUser
+      name: rdbBridgeConfigDbName
+      port: 5432
